@@ -1,6 +1,9 @@
-import logoImage from '../assets/noir_care_carwash.jpeg';
+import whiteLogo from '../assets/white-splash-logo.jpeg';
+import blackLogo from '../assets/black-splash-logo.jpeg';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Hero() {
+  const { theme } = useTheme();
   return (
     <section
       class="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black dark:bg-white transition-colors duration-300"
@@ -8,11 +11,11 @@ export default function Hero() {
     >
       <div class="max-w-5xl mx-auto text-center space-y-8">
         {/* Logo */}
-        <div class="flex justify-center mb-8 animate-fade-in min-h-screen">
+        <div class="flex justify-center mb-8 animate-fade-in">
           <img
-            src={logoImage}
+            src={theme() === 'light' ? whiteLogo : blackLogo}
             alt="Noir CarCare - Oog voor Detail"
-            class="w-full max-w-md h-auto rounded-lg shadow-2xl"
+            class="w-auto h-auto max-h-96 rounded-lg"
             loading="eager"
             fetchpriority="high"
           />
