@@ -11,11 +11,11 @@ export default function Hero() {
     >
       <div class="max-w-5xl mx-auto text-center space-y-8">
         {/* Logo */}
-        <div class="flex justify-center mb-8 animate-fade-in">
+        <div class="min-h-screen flex justify-center mb-8 animate-fade-in">
           <img
             src={theme() === 'light' ? whiteLogo : blackLogo}
             alt="Noir CarCare - Oog voor Detail"
-            class="w-auto h-auto max-h-96 rounded-lg"
+            class="w-auto h-auto max-h-96 rounded-lg self-center"
             loading="eager"
             fetchpriority="high"
           />
