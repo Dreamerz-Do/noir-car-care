@@ -8,7 +8,7 @@ export default function Hero() {
     >
       <div class="max-w-5xl mx-auto text-center space-y-8">
         {/* Logo */}
-        <div class="flex justify-center mb-8 animate-fade-in">
+        <div class="flex justify-center mb-8 animate-fade-in min-h-screen">
           <img
             src={logoImage}
             alt="Noir CarCare - Oog voor Detail"
@@ -16,6 +16,24 @@ export default function Hero() {
             loading="eager"
             fetchpriority="high"
           />
+          {/* Scroll indicator - positioned relative to section */}
+          <div class="absolute flex justify-center animate-bounce bottom-2">
+            <svg
+              class="w-6 h-6 sm:w-8 sm:h-8 text-noir-blue"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </div>
         </div>
 
         {/* Heading */}
@@ -49,25 +67,6 @@ export default function Hero() {
           >
             Contact Opnemen
           </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg
-            class="w-8 h-8 text-noir-blue"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
         </div>
       </div>
     </section>
