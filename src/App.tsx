@@ -32,6 +32,9 @@ function App() {
           <p class="text-gray-500 dark:text-gray-500 text-sm mt-2">
             Premium auto verzorging met passie voor perfectie
           </p>
+          <p class="text-gray-500 dark:text-gray-500 text-sm mt-2">
+            Website build by <a class="underline" href='https://dreamerz-do.nl/'>Dreamerz Do</a>
+          </p>
         </div>
       </footer>
     </ThemeProvider>
