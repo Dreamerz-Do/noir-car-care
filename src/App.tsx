@@ -28,13 +28,13 @@ function App() {
         role="contentinfo"
       >
         <div class="max-w-7xl mx-auto text-center">
-          <p class="text-gray-400 dark:text-gray-600">
+          <p class="text-gray-300 dark:text-gray-600">
             &copy; {new Date().getFullYear()} Noir CarCare - Oog voor Detail. Alle rechten voorbehouden.
           </p>
-          <p class="text-gray-500 dark:text-gray-500 text-sm mt-2">
+          <p class="text-gray-400 dark:text-gray-500 text-sm mt-2">
             Premium auto verzorging met passie voor perfectie
           </p>
-          <p class="text-gray-500 dark:text-gray-500 text-sm mt-2">
+          <p class="text-gray-400 dark:text-gray-500 text-sm mt-2">
             Website build by <a class="underline" href='https://dreamerz-do.nl/'>Dreamerz Do</a>
           </p>
         </div>

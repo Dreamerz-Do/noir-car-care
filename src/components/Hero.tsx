@@ -60,13 +60,13 @@ export default function Hero() {
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 animate-fade-in-delay">
           <a
             href="#services"
-            class="px-8 py-4 bg-noir-blue text-black font-semibold rounded-lg shadow-lg hover:shadow-noir-blue/50 hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
+            class="px-8 py-4 bg-noir-blue text-black dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-noir-blue/50 hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
           >
             Bekijk Onze Services
           </a>
           <a
             href="#contact"
-            class="px-8 py-4 border-2 border-noir-blue text-noir-blue font-semibold rounded-lg hover:bg-noir-blue hover:text-black transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
+            class="px-8 py-4 border-2 border-noir-blue text-noir-blue font-semibold rounded-lg hover:bg-noir-blue hover:text-black dark:hover:text-white transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
           >
             Contact Opnemen
           </a>

@@ -244,7 +244,7 @@ export default function Services() {
                       {/* CTA */}
                       <a
                         href="#contact"
-                        class="w-full py-2 bg-noir-blue text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-noir-blue/50 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50 block text-center"
+                        class="w-full py-2 bg-noir-blue text-black dark:text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-noir-blue/50 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50 block text-center"
                         aria-label={`Neem contact op voor meer informatie over ${pkg.title}`}
                       >
                         Contact Opnemen

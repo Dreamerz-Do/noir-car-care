@@ -126,7 +126,7 @@ export default function Contact() {
             {/* Submit Button */}
             <button
               type="submit"
-              class="w-full py-4 bg-noir-blue text-black font-semibold rounded-lg shadow-lg hover:shadow-noir-blue/50 hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
+              class="w-full py-4 bg-noir-blue text-black dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-noir-blue/50 hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
             >
               Verstuur Bericht
             </button>
