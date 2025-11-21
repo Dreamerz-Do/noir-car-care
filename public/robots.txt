@@ -1,0 +1,6 @@
+# robots.txt for Noir CarCare
+User-agent: *
+Allow: /
+
+# Sitemap location (relative path works for both .nl and .com domains)
+Sitemap: /sitemap.xml

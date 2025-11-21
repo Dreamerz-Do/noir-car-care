@@ -7,14 +7,29 @@
 
     <!-- SEO Meta Tags -->
     <title>Noir CarCare - Premium Auto Verzorging | Oog voor Detail</title>
-    <meta name="description" content="Ervaar de ultieme auto verzorging bij Noir CarCare. Professioneel car detailing, wasbeurt, lakbescherming en restauratie met oog voor elk detail." />
-    <meta name="keywords" content="auto detailing, car wash, carwash, lakbescherming, auto verzorging, keramische coating, polijsten, Noir CarCare" />
+    <meta name="description" content="Professionele auto verzorging met keramische coating, glascoating, stoomreiniging, polijsten, kleibehandeling en lederreiniging. Van basic wasbeurt tot complete detailbeurt. Premium car detailing met oog voor elk detail." />
+    <meta name="keywords" content="keramische coating, glascoating, car detailing, auto polijsten, kleibehandeling, stoomreiniging auto, lederreiniging auto, lakbescherming, velgenbescherming, interieurreiniging, car wash, wasbeurt, vlekverwijdering, kunststofherstel, teerverwijdering, waxbehandeling, tiregel, Noir CarCare" />
+
+    <!-- Multi-domain SEO - Canonical and Alternate URLs -->
+    <link rel="canonical" href="https://noircarcare.nl/" />
+    <link rel="alternate" hreflang="nl" href="https://noircarcare.nl/" />
+    <link rel="alternate" hreflang="en" href="https://noircarcare.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://noircarcare.nl/" />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Noir CarCare - Premium Auto Verzorging" />
-    <meta property="og:description" content="Professioneel car detailing met oog voor detail" />
+    <meta property="og:title" content="Noir CarCare - Premium Auto Verzorging | Keramische Coating & Detailing" />
+    <meta property="og:description" content="Professionele auto verzorging met keramische coating, glascoating, stoomreiniging en polijsten. Premium car detailing met oog voor elk detail." />
     <meta property="og:image" content="/src/assets/white-splash-logo.jpeg" />
+    <meta property="og:url" content="https://noircarcare.nl/" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Noir CarCare - Premium Auto Verzorging" />
+    <meta name="twitter:description" content="Professionele auto verzorging met keramische coating, glascoating, stoomreiniging en polijsten." />
+    <meta name="twitter:image" content="/src/assets/white-splash-logo.jpeg" />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
@@ -23,6 +38,73 @@
     <!-- Performance & Preload - LCP Image Optimization -->
     <link rel="preload" href="/src/assets/white-splash-logo.jpeg" as="image" fetchpriority="high" />
     <link rel="preload" href="/src/assets/black-splash-logo.jpeg" as="image" fetchpriority="high" />
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Noir CarCare",
+      "image": "https://noircarcare.nl/src/assets/white-splash-logo.jpeg",
+      "description": "Professionele auto verzorging met keramische coating, glascoating, stoomreiniging, polijsten en lederreiniging. Premium car detailing met oog voor elk detail.",
+      "url": "https://noircarcare.nl",
+      "telephone": "",
+      "priceRange": "€€-€€€",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NL"
+      },
+      "sameAs": [
+        "https://noircarcare.com"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Auto Verzorging Diensten",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Keramische Coating",
+              "description": "Keramische waxbescherming en glascoating voor langdurige lakbescherming"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Auto Polijsten",
+              "description": "3 staps professioneel polijsten voor diepe glans"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Stoomreiniging",
+              "description": "Dieptereiniging interieur door middel van stoombehandeling"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Lederreiniging & Verzorging",
+              "description": "Professionele lederreiniging en verzorging"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Car Detailing",
+              "description": "Complete professionele detailbeurt binnen en buiten"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 
     <!-- Inline script to prevent flash of wrong theme -->
     <script>

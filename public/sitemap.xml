@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://noircarcare.nl/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://noircarcare.nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noircarcare.com/" />
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://noircarcare.nl/#services</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://noircarcare.nl/#services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noircarcare.com/#services" />
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://noircarcare.nl/#contact</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://noircarcare.nl/#contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://noircarcare.com/#contact" />
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
