@@ -2,6 +2,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <main id="main-content">
         <Hero />
         <Services />
+        <Contact />
       </main>
 
       {/* Footer */}
