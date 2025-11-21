@@ -2,5 +2,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap location (relative path works for both .nl and .com domains)
-Sitemap: /sitemap.xml
+# Sitemap locations for both domains
+Sitemap: https://noircarcare.nl/sitemap.xml
+Sitemap: https://noircarcare.com/sitemap.xml
