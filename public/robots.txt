@@ -2,6 +2,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap locations for both domains
+# Sitemap locations for all domains
+Sitemap: https://www.noircarcare.nl/sitemap.xml
 Sitemap: https://noircarcare.nl/sitemap.xml
+Sitemap: https://www.noircarcare.com/sitemap.xml
 Sitemap: https://noircarcare.com/sitemap.xml
