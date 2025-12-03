@@ -284,7 +284,9 @@ export default function Contact() {
               </svg>
             </div>
             <h3 class="text-white dark:text-black font-semibold mb-2">Telefoon</h3>
-            <p class="text-gray-400 dark:text-gray-600">Binnenkort beschikbaar</p>
+            <p class="text-gray-400 dark:text-gray-600">
+              <a href="tel:+31645650162">+31 6 45 65 01 62</a>
+            </p>
           </div>
 
           {/* Email */}
@@ -307,7 +309,9 @@ export default function Contact() {
               </svg>
             </div>
             <h3 class="text-white dark:text-black font-semibold mb-2">E-mail</h3>
-            <p class="text-gray-400 dark:text-gray-600">Binnenkort beschikbaar</p>
+            <p class="text-gray-400 dark:text-gray-600">
+              <a href="mailto:noircarcare@gmail.com">noircarcare@gmail.com</a>
+            </p>
           </div>
 
           {/* Location */}
@@ -336,7 +340,7 @@ export default function Contact() {
               </svg>
             </div>
             <h3 class="text-white dark:text-black font-semibold mb-2">Locatie</h3>
-            <p class="text-gray-400 dark:text-gray-600">Nederland</p>
+            <p class="text-gray-400 dark:text-gray-600">Heel Nederland</p>
           </div>
         </div>
       </div>
