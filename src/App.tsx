@@ -3,6 +3,7 @@ import ThemeToggle from './components/ThemeToggle';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Contact from './components/Contact';
+import CookieBanner from './components/CookieBanner';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* Cookie Consent Banner */}
+      <CookieBanner />
     </ThemeProvider>
   );
 }

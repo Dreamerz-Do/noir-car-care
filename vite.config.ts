@@ -3,7 +3,7 @@ import solid from 'vite-plugin-solid'
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [tailwindcss(), solid()],
+  plugins: [solid(), tailwindcss()],
   optimizeDeps: {
     exclude: ['solid-js'],
   },

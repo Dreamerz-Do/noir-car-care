@@ -1,4 +1,102 @@
+import { createSignal, onCleanup } from "solid-js";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().min(1, "Vul uw naam in"),
+  email: z.string().min(1, "Vul uw e-mail in").email("Ongeldig e-mailadres"),
+  phone: z.string().optional(),
+  service: z.string().optional(),
+  message: z.string().min(1, "Vul uw bericht in"),
+});
+
 export default function Contact() {
+  const [name, setName] = createSignal("");
+  const [email, setEmail] = createSignal("");
+  const [phone, setPhone] = createSignal("");
+  const [service, setService] = createSignal("");
+  const [message, setMessage] = createSignal("");
+
+  const [errors, setErrors] = createSignal<Record<string, string>>({});
+  const [toast, setToast] = createSignal<{ type: "success" | "error"; title: string; detail?: string } | null>(null);
+  const [submitting, setSubmitting] = createSignal(false);
+
+  let toastTimer: number | undefined;
+  const showToast = (t: { type: "success" | "error"; title: string; detail?: string }, ms = 4000) => {
+    setToast(t);
+    clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => setToast(null), ms);
+  };
+  onCleanup(() => clearTimeout(toastTimer));
+
+  const clearForm = () => {
+    setName("");
+    setEmail("");
+    setPhone("");
+    setService("");
+    setMessage("");
+    setErrors({});
+  };
+
+  const handleSubmit = async (e: Event) => {
+    e.preventDefault();
+    setToast(null);
+    setErrors({});
+    const parsed = contactSchema.safeParse({
+      name: name(),
+      email: email(),
+      phone: phone(),
+      service: service(),
+      message: message(),
+    });
+
+    if (!parsed.success) {
+      const fieldErrors: Record<string, string> = {};
+      parsed.error.issues.forEach((err) => {
+        const key = String(err.path?.[0] ?? "form");
+        fieldErrors[key] = err.message;
+      });
+      setErrors(fieldErrors);
+      showToast({ type: "error", title: "Controleer uw invoer", detail: "Er staan fouten in het formulier." }, 5000);
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const combinedMessage = [
+        `Telefoonnummer: ${phone() || "Niet opgegeven"}`,
+        `Service: ${service() || "Niet opgegeven"}`,
+        `\nBericht:\n${message()}`,
+      ].join(" ");
+
+      const res = await fetch("https://europe-west1-ddmailer.cloudfunctions.net/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Origin: window.location.origin,
+          Referer: window.location.href,
+        },
+        referrerPolicy: "origin-when-cross-origin",
+        body: JSON.stringify({
+          name: name(),
+          email: email(),
+          message: combinedMessage,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Network response was not ok (${res.status})`);
+      }
+
+      showToast({ type: "success", title: "Bericht verzonden", detail: "We hebben uw bericht ontvangen." }, 4000);
+      clearForm();
+    } catch (err) {
+      console.error("Send email error:", err);
+      showToast({ type: "error", title: "Fout bij verzenden", detail: "Probeer het later opnieuw." }, 6000);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -19,9 +117,20 @@ export default function Contact() {
           </p>
         </div>
 
+        {/* Toast */}
+        {toast() && (
+          <div
+            role="status"
+            class={`mb-6 p-4 rounded ${toast()!.type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"}`}
+          >
+            <strong>{toast()!.title}</strong>
+            {toast()!.detail && <div class="text-sm mt-1">{toast()!.detail}</div>}
+          </div>
+        )}
+
         {/* Contact Form */}
         <div class="bg-zinc-900 dark:bg-gray-100 p-8 rounded-xl shadow-xl border border-zinc-800 dark:border-gray-200">
-          <form class="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form class="space-y-6" onSubmit={handleSubmit} novalidate>
             {/* Name */}
             <div>
               <label
@@ -35,9 +144,14 @@ export default function Contact() {
                 id="name"
                 name="name"
                 required
+                value={name()}
+                onInput={(e) => setName((e.target as HTMLInputElement).value)}
                 class="w-full px-4 py-3 bg-black dark:bg-white border border-zinc-800 dark:border-gray-200 rounded-lg text-white dark:text-black placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-noir-blue focus:border-transparent transition-all duration-300"
                 placeholder="Uw naam"
+                aria-invalid={!!errors().name}
+                aria-describedby={errors().name ? "name-error" : undefined}
               />
+              {errors().name && <p id="name-error" class="mt-1 text-sm text-red-400">{errors().name}</p>}
             </div>
 
             {/* Email */}
@@ -53,9 +167,14 @@ export default function Contact() {
                 id="email"
                 name="email"
                 required
+                value={email()}
+                onInput={(e) => setEmail((e.target as HTMLInputElement).value)}
                 class="w-full px-4 py-3 bg-black dark:bg-white border border-zinc-800 dark:border-gray-200 rounded-lg text-white dark:text-black placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-noir-blue focus:border-transparent transition-all duration-300"
                 placeholder="uw.email@voorbeeld.nl"
+                aria-invalid={!!errors().email}
+                aria-describedby={errors().email ? "email-error" : undefined}
               />
+              {errors().email && <p id="email-error" class="mt-1 text-sm text-red-400">{errors().email}</p>}
             </div>
 
             {/* Phone */}
@@ -70,6 +189,8 @@ export default function Contact() {
                 type="tel"
                 id="phone"
                 name="phone"
+                value={phone()}
+                onInput={(e) => setPhone((e.target as HTMLInputElement).value)}
                 class="w-full px-4 py-3 bg-black dark:bg-white border border-zinc-800 dark:border-gray-200 rounded-lg text-white dark:text-black placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-noir-blue focus:border-transparent transition-all duration-300"
                 placeholder="06 12345678"
               />
@@ -86,6 +207,8 @@ export default function Contact() {
               <select
                 id="service"
                 name="service"
+                value={service()}
+                onInput={(e) => setService((e.target as HTMLSelectElement).value)}
                 class="w-full px-4 py-3 bg-black dark:bg-white border border-zinc-800 dark:border-gray-200 rounded-lg text-white dark:text-black focus:outline-none focus:ring-2 focus:ring-noir-blue focus:border-transparent transition-all duration-300"
               >
                 <option value="">Selecteer een pakket</option>
@@ -118,17 +241,23 @@ export default function Contact() {
                 name="message"
                 required
                 rows="5"
+                value={message()}
+                onInput={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
                 class="w-full px-4 py-3 bg-black dark:bg-white border border-zinc-800 dark:border-gray-200 rounded-lg text-white dark:text-black placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-noir-blue focus:border-transparent transition-all duration-300 resize-none"
                 placeholder="Vertel ons over uw auto en uw wensen..."
+                aria-invalid={!!errors().message}
+                aria-describedby={errors().message ? "message-error" : undefined}
               ></textarea>
+              {errors().message && <p id="message-error" class="mt-1 text-sm text-red-400">{errors().message}</p>}
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              class="w-full py-4 bg-noir-blue text-black dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-noir-blue/50 hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50"
+              class="w-full py-4 bg-noir-blue text-black dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-noir-blue/50 hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-noir-blue/50 disabled:opacity-60"
+              disabled={submitting()}
             >
-              Verstuur Bericht
+              {submitting() ? "Verzenden..." : "Verstuur Bericht"}
             </button>
           </form>
         </div>
