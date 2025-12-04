@@ -6,13 +6,6 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "redirects": [
-      {
-        "source": "/**",
-        "destination": "https://www.noircarcare.nl/:splat",
-        "type": 301
-      }
-    ],
     "rewrites": [
       {
         "source": "**",
