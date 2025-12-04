@@ -121,8 +121,18 @@ export default function Contact() {
         {toast() && (
           <div
             role="status"
-            class={`mb-6 p-4 rounded ${toast()!.type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"}`}
+            class={`fixed top-6 right-6 p-4 pr-12 rounded shadow-lg z-50 max-w-md ${toast()!.type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"}`}
           >
+            <button
+              type="button"
+              onClick={() => setToast(null)}
+              class="absolute top-2 right-2 text-white hover:opacity-70 transition-opacity"
+              aria-label="Sluit melding"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
             <strong>{toast()!.title}</strong>
             {toast()!.detail && <div class="text-sm mt-1">{toast()!.detail}</div>}
           </div>
